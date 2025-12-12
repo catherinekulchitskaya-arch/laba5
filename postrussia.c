@@ -25,4 +25,4 @@ void load_parcels(Parcel **parcels, int *count, const char *filename) {
     fclose(file);
 }
 
-// Остальные функции аналогичны предыдущим примерам
+
