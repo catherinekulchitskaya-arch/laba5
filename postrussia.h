@@ -2,18 +2,17 @@
 #define POST_H
 
 typedef struct Parcel {
-    char tracking_number[20];    // Номер отслеживания
-    char sender[100];           // Отправитель
-    char recipient[100];        // Получатель
-    char sender_address[200];   // Адрес отправителя
-    char recipient_address[200]; // Адрес получателя
-    char status[50];            // Статус отправления
-    char date[20];              // Дата отправления
-    float weight;               // Вес (кг)
-    float cost;                 // Стоимость
+    char tracking_number[20];    
+    char sender[100];           
+    char recipient[100];        
+    char sender_address[200];   
+    char recipient_address[200]; 
+    char status[50];           
+    char date[20];              
+    float weight;               
+    float cost;                 
 } Parcel;
 
-// Прототипы функций
 void load_parcels(Parcel **parcels, int *count, const char *filename);
 void save_parcels(Parcel *parcels, int count, const char *filename);
 void print_parcels(Parcel *parcels, int count);
