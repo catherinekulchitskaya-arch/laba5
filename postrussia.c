@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "postrussia.h"
 
 void load_parcels(Parcel **parcels, int *count, const char *filename) {
