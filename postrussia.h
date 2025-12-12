@@ -4,7 +4,11 @@
 typedef struct Parcel {
     char tracking_number[20];    
     char sender[100];           
-    char recipient[100];        
+    char recipient[100];
+    char sender_number[20];
+    char recipient_number[20];
+    char sender_email[50];
+    char recipient_email[50];
     char sender_address[200];   
     char recipient_address[200]; 
     char status[50];           
