@@ -1,28 +1,43 @@
 #ifndef POST_H
 #define POST_H
+#define NAME_LEN 100
 
-typedef struct Parcel {
-    char tracking_number[20];    
-    char sender[100];           
-    char recipient[100];
-    char sender_number[20];
-    char recipient_number[20];
-    char sender_email[50];
-    char recipient_email[50];
-    char sender_address[200];   
-    char recipient_address[200]; 
-    char status[50];           
-    char date[20];              
+typedef struct {
+    char tracking_number;    
+    char sender;           
+    char recipient;
+    char sender_number;
+    char recipient_number;
+    char sender_email;
+    char recipient_email;
+    char sender_address;   
+    char recipient_address; 
+    char status;           
+    char date;              
     float weight;               
     float cost;                 
-} Parcel;
+} PostalItem;
 
-void load_parcels(Parcel **parcels, int *count, const char *filename);
-void save_parcels(Parcel *parcels, int count, const char *filename);
-void print_parcels(Parcel *parcels, int count);
-void add_parcel(Parcel **parcels, int *count);
-void delete_parcel(Parcel **parcels, int *count);
-void edit_parcel(Parcel *parcels, int count);
-void search_parcels(Parcel *parcels, int count);
+typedef struct Node {
+    PostalItem data;
+    struct Node* next;
+} Node;
+
+Node* create_node(PostalItem item);
+void add_to_list(Node** head, PostalItem item);
+void delete_from_list(Node** head, char tracking_number );
+Node* find_by_id(Node* head, char tracking_number);
+Node* find_by_status(Node* head, const char* status);
+void print_list(Node* head);
+void free_list(Node** head);
+int list_size(Node* head);
+
+void save_to_file(Node* head, const char* filename);
+Node* load_from_file(const char* filename);
+
+PostalItem create_item();
+void edit_item(PostalItem* item);
+void print_item(PostalItem item);
+
 
 #endif
