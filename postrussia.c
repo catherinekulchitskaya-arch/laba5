@@ -413,3 +413,19 @@ void edit_item_interactive(PostalItem* item) {
         }
     } while (choice != 0);
 }
+
+void print_item(PostalItem item) {
+    printf("Трек-номер: %s\n", item.tracking_number);
+    printf("Отправитель: %s\n", item.sender);
+    printf("Получатель: %s\n", item.recipient);
+    printf("Телефон отправителя: %s\n", item.sender_phone);
+    printf("Телефон получателя: %s\n", item.recipient_phone);
+    printf("Email отправителя: %s\n", item.sender_email);
+    printf("Email получателя: %s\n", item.recipient_email);
+    printf("Адрес отправителя: %s\n", item.sender_address);
+    printf("Адрес получателя: %s\n", item.recipient_address);
+    printf("Статус: %s\n", item.status);
+    printf("Дата отправки: %s\n", item.date);
+    printf("Вес: %.2f кг\n", item.weight);
+    printf("Стоимость: %.2f руб\n", item.cost);
+}
