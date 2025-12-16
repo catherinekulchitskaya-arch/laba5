@@ -30,7 +30,6 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-
 Node* create_node(PostalItem item);
 void add_to_list(Node** head, PostalItem item);
 int delete_from_list(Node** head, const char* tracking_number);
@@ -38,10 +37,8 @@ void print_list(Node* head);
 void free_list(Node** head);
 int list_size(Node* head);
 
-
 Node* find_by_tracking_number(Node* head, const char* tracking_number);
 Node* find_by_status(Node* head, const char* status);
-
 
 void save_to_file(Node* head, const char* filename);
 Node* load_from_file(const char* filename);
@@ -49,7 +46,6 @@ Node* load_from_file(const char* filename);
  create_item_interactive();
 void edit_item_interactive(PostalItem* item);
 void print_item(PostalItem item);
-
 
 Node* find_by_sender(Node* head, const char* sender_name);
 Node* find_by_recipient(Node* head, const char* recipient_name);
