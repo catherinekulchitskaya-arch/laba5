@@ -6,7 +6,7 @@
 #define FILENAME "postal_database.txt"
 
 void print_menu() {
-    printf("ПОЧТА РОССИИ - СИСТЕМА УЧЕТА ОТПРАВЛЕНИЙ\n");
+    printf("\nПОЧТА РОССИИ - СИСТЕМА УЧЕТА ОТПРАВЛЕНИЙ\n");
     printf("1. Показать все отправления\n");
     printf("2. Добавить новое отправление\n");
     printf("3. Удалить отправление по трек-номеру\n");
@@ -18,18 +18,18 @@ void print_menu() {
     printf("9. Сохранить изменения в файл\n");
     printf("10. Загрузить данные из файла\n");
     printf("11. Статистика\n");
-    printf("12. Выход\n");
-    printf("Выберите действие: ");
+    printf("0. Выход\n");
+    printf("\nВыберите действие: ");
 }
 
 void search_by_tracking_number(Node* head) {
     char track[TRACKING_LEN];
-    printf("Введите трек-номер для поиска: ");
+    printf("\nВведите трек-номер для поиска: ");
     scanf(" %[^\n]", track);
     
     Node* found = find_by_tracking_number(head, track);
     if (found != NULL) {
-        printf("НАЙДЕННАЯ ЗАПИСЬ\n");
+        printf("\nНАЙДЕННАЯ ЗАПИСЬ\n");
         print_item(found->data);
     } else {
         printf("Отправление с трек-номером '%s' не найдено.\n", track);
@@ -38,7 +38,7 @@ void search_by_tracking_number(Node* head) {
 
 void search_by_status_menu(Node* head) {
     char status[STATUS_LEN];
-    printf("Введите статус для поиска (На обработке/В пути/Доставлено): ");
+    printf("\nВведите статус для поиска (На обработке/В пути/Доставлено): ");
     scanf(" %[^\n]", status);
     
     Node* results = find_by_status(head, status);
@@ -49,7 +49,7 @@ void search_by_status_menu(Node* head) {
 
 void search_by_sender_menu(Node* head) {
     char sender[NAME_LEN];
-    printf("Введите ФИО или часть имени отправителя: ");
+    printf("\nВведите ФИО или часть имени отправителя: ");
     scanf(" %[^\n]", sender);
     
     Node* results = find_by_sender(head, sender);
@@ -60,7 +60,7 @@ void search_by_sender_menu(Node* head) {
 
 void search_by_recipient_menu(Node* head) {
     char recipient[NAME_LEN];
-    printf("Введите ФИО или часть имени получателя: ");
+    printf("\nВведите ФИО или часть имени получателя: ");
     scanf(" %[^\n]", recipient);
     
     Node* results = find_by_recipient(head, recipient);
@@ -71,21 +71,21 @@ void search_by_recipient_menu(Node* head) {
 
 void edit_item_menu(Node* head) {
     char track[TRACKING_LEN];
-    printf("Введите трек-номер отправления для редактирования: ");
+    printf("\nВведите трек-номер отправления для редактирования: ");
     scanf(" %[^\n]", track);
     
     Node* found = find_by_tracking_number(head, track);
     if (found != NULL) {
         edit_item_interactive(&found->data);
-        printf("Запись успешно обновлена.\n");
+        printf("\nЗапись успешно обновлена.\n");
     } else {
-        printf("Отправление с трек-номером '%s' не найдено.\n", track);
+        printf("\nОтправление с трек-номером '%s' не найдено.\n", track);
     }
 }
 
 void show_statistics(Node* head) {
     if (head == NULL) {
-        printf("База данных пуста.\n");
+        printf("\nБаза данных пуста.\n");
         return;
     }
     
@@ -105,7 +105,7 @@ void show_statistics(Node* head) {
         current = current->next;
     }
     
-    printf("СТАТИСТИКА\n");
+    printf("\nСТАТИСТИКА\n");
     printf("Всего отправлений: %d\n", total);
     printf("На обработке: %d (%.1f%%)\n", in_processing, 
            total > 0 ? (float)in_processing/total*100 : 0);
@@ -123,7 +123,7 @@ int main() {
     int choice;
     char track[TRACKING_LEN];
     
-    printf("ЗАГРУЗКА ДАННЫХ\n");
+    printf("\nЗАГРУЗКА ДАННЫХ\n");
     head = load_from_file(FILENAME);
     
     do {
@@ -184,7 +184,7 @@ int main() {
                 break;
                 
             case 0: 
-                printf("Сохранение данных перед выходом\n");
+                printf("\nСохранение данных перед выходом\n");
                 save_to_file(head, FILENAME);
                 printf("Очистка памяти\n");
                 free_list(&head);
