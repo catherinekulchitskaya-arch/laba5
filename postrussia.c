@@ -27,7 +27,7 @@ void add_to_list(Node** head, PostalItem item) {
         }
         current->next = new_node;
     }
-    printf("Элемент успешно добавлен!\n");
+    printf("\nЭлемент успешно добавлен!\n");
 }
 
 int delete_from_list(Node** head, const char* tracking_number) {
