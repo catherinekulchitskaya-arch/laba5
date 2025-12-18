@@ -43,7 +43,7 @@ Node* find_by_status(Node* head, const char* status);
 void save_to_file(Node* head, const char* filename);
 Node* load_from_file(const char* filename);
 
- create_item_interactive();
+PostalItem create_item_interactive();
 void edit_item_interactive(PostalItem* item);
 void print_item(PostalItem item);
 
